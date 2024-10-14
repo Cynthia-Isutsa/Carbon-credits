@@ -3,7 +3,7 @@
 // DO NOT CHANGE IT MANUALLY!
 import React from 'react';
 import { Avatar, version, Dropdown, Menu, Spin } from 'antd';
-import { LogoutOutlined } from 'C:/Users/Pathways Technology/Desktop/CBC/carbon_credit/node_modules/@ant-design/icons';
+import { LogoutOutlined } from '/home/pathways/carbon-credit/node_modules/@ant-design/icons';
 import { SelectLang } from '@@/plugin-locale';
 
 export function getRightRenderContent (opts: {
