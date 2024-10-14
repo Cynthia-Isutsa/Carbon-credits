@@ -115,7 +115,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/dashboard/analysis',
+    redirect: '/general/profile',
   },
   {
     component: '404',
