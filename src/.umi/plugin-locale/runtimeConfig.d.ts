@@ -3,7 +3,7 @@
 import {
   IntlCache,
   createIntl,
-} from '/home/isutsa_/Documents/carbon-credit/node_modules/@umijs/plugins/node_modules/react-intl';
+} from 'C:/Users/Pathways Technology/Desktop/carbon-credit/node_modules/@umijs/plugins/node_modules/react-intl';
 type OptionalIntlConfig = Omit<Parameters<typeof createIntl>[0], 'locale' | 'defaultLocale'>;
 export interface IRuntimeConfig {
     locale?: {

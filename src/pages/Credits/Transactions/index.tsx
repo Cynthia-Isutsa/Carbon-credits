@@ -49,7 +49,7 @@ const Transactions = () => {
         {/* <Title style={{ paddingLeft: '15px' }} level={3}>
           TRANSACTIONS
         </Title> */}
-        <Row
+        {/* <Row
           style={{
             width: '100%',
             justifyContent: 'space-between',
@@ -83,7 +83,7 @@ const Transactions = () => {
               </Text>
             </ProCard>
           </Col>
-        </Row>
+        </Row> */}
       </div>
       <br />
 

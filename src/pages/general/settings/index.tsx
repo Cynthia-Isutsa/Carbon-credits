@@ -8,7 +8,7 @@ import {
 
 const Settings = () => {
   return (
-    <PageContainer breadcrumbRender={false} title="Organizations Information">
+    <PageContainer title="Organizations Information">
       <ProForm>
         <ProFormText
           name="Name"
