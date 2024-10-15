@@ -28,8 +28,8 @@ export async function getRoutes() {
 '18': React.lazy(() => import(/* webpackChunkName: "p__Credits__WareHouse__index" */'@/pages/Credits/WareHouse/index.tsx')),
 '19': React.lazy(() => import('./EmptyRoute')),
 '20': React.lazy(() => import(/* webpackChunkName: "p__404" */'@/pages/404.tsx')),
-'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'C:/Users/Pathways Technology/Desktop/CBC/carbon_credit/src/.umi/plugin-layout/Layout.tsx')),
-'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'C:/Users/Pathways Technology/Desktop/CBC/carbon_credit/src/.umi/plugin-openapi/openapi.tsx')),
+'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'/home/pathways/carbon-credit/src/.umi/plugin-layout/Layout.tsx')),
+'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'/home/pathways/carbon-credit/src/.umi/plugin-openapi/openapi.tsx')),
 },
   };
 }
