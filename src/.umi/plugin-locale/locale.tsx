@@ -4,15 +4,15 @@
 import React from 'react';
 import { ConfigProvider } from 'antd';
 
-import moment from '/home/pathways/carbon-credit/node_modules/dayjs';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/bn-bd';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/en';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/fa';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/id';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/ja';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/pt-br';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/zh-cn';
-import '/home/pathways/carbon-credit/node_modules/dayjs/locale/zh-tw';
+import moment from '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/bn-bd';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/en';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/fa';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/id';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/ja';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/pt-br';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/zh-cn';
+import '/home/isutsa_/Documents/carbon-credit/node_modules/dayjs/locale/zh-tw';
 import { RawIntlProvider, getLocale, getDirection , setIntl, getIntl, localeInfo, event, LANG_CHANGE_EVENT } from './localeExports';
 
 

@@ -3,15 +3,15 @@
 // DO NOT CHANGE IT MANUALLY!
 import React, { useEffect, useState } from 'react';
 import { ApplyPluginsType } from 'umi';
-import { renderClient, RenderClientOpts } from '/home/pathways/carbon-credit/node_modules/@umijs/renderer-react';
+import { renderClient, RenderClientOpts } from '/home/isutsa_/Documents/carbon-credit/node_modules/@umijs/renderer-react';
 import { createHistory } from './core/history';
 import { createPluginManager } from './core/plugin';
 import { getRoutes } from './core/route';
 import type { Location } from 'history';
 
 
-import '/home/pathways/carbon-credit/src/global.less';
-import '/home/pathways/carbon-credit/src/global.tsx';
+import '/home/isutsa_/Documents/carbon-credit/src/global.less';
+import '/home/isutsa_/Documents/carbon-credit/src/global.tsx';
 import 'antd/dist/reset.css';
 const publicPath = '/';
 const runtimePublicPath = false;
