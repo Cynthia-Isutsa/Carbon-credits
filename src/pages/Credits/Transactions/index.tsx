@@ -44,7 +44,7 @@ const Transactions = () => {
   return (
     <PageContainer title="TRANSACTIONS">
       <div>
-        <Title level={5}>A comprehensive overview of KCA Universitys transactions</Title>
+        <Title level={5}>A comprehensive overview of Pathways transactions</Title>
         {/* <Title style={{ paddingLeft: '15px' }} level={3}>
           TRANSACTIONS
         </Title> */}

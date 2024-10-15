@@ -65,6 +65,13 @@ export default [
         component: './general/projects',
       },
       {
+        name: 'AddProjects',
+        icon: 'smile',
+        path: '/general/projects/onboard',
+        component: './general/projects/AddProject',
+        hideInMenu: true,
+      },
+      {
         name: ' Users',
         icon: 'smile',
         path: '/general/users',

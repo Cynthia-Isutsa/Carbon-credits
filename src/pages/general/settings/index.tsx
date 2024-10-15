@@ -11,14 +11,14 @@ const Settings = () => {
     <PageContainer title="Organizations Information">
       <ProForm>
         <ProFormText
-          name="Name"
+          name="name"
           label="Organization Name"
           // tooltip="Name"
           placeholder="Organization Name"
           rules={[{ required: true }]}
         />
         <ProFormText
-          name="providerAddress"
+          name="bio"
           label="Bio"
           // tooltip="Name"
           placeholder="Provider Address"
@@ -97,7 +97,7 @@ const Settings = () => {
         />
 
         <ProFormText
-          name="providerInformation"
+          name="phoneNumber"
           label="Phone Number"
           // tooltip="Name"
           placeholder="Provider information"
@@ -112,7 +112,7 @@ const Settings = () => {
         />
 
         <ProFormText
-          name="providerInformation"
+          name="streetAddress"
           label="Street Address"
           // tooltip="Name"
           placeholder="Street address"
