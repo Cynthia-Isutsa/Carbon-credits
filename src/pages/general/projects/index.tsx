@@ -1,9 +1,11 @@
 // import PageHeader from '@/components/PageHeader/PageHeader';
 import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { HomeOutlined, PlusOutlined } from '@ant-design/icons';
+import { useNavigate } from '@umijs/max';
 import { Button, Card } from 'antd';
 
 function Projects() {
+  const navigate = useNavigate();
   const companyProfile = {
     title: 'Reforestation Initiative',
   };
@@ -34,14 +36,12 @@ function Projects() {
             title: 'Projects',
           },
         ]}
-      >
-        <div style={{ marginBottom: 16, textAlign: 'right' }}>
-          <Button type="primary" icon={<PlusOutlined />}>
-            Add a Project
-          </Button>
-        </div>
-      </PageHeader>
-
+      ></PageHeader>
+      <div style={{ marginBottom: 16, textAlign: 'right' }}>
+        <Button type="primary" icon={<PlusOutlined /> } onClick={() => navigate('/general/projects/onboard')}>
+          Add a Project
+        </Button>
+      </div>
       <div
         style={{
           display: 'flex',

@@ -143,9 +143,9 @@ const Inventory = () => {
     },
   ];
   return (
-    <PageContainer title="Inventory">
+    <PageContainer title="INVENTORY">
       <>
-        <Title level={5}>A comprehensive overview of KCA Universitys transactions.</Title>
+        <Title level={5}>An overview of your entire carbon credit inventory, including both ex-post and ex-ante credits</Title>
         <Row>
           <Col xs={24} sm={12} md={8} lg={11}>
             <Search
