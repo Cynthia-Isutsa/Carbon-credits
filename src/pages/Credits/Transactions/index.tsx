@@ -1,7 +1,5 @@
 import { PageContainer, ProCard } from '@ant-design/pro-components';
 import { useLocation } from '@umijs/max';
-import { Col, Row } from 'antd';
-import Text from 'antd/es/typography/Text';
 import Title from 'antd/es/typography/Title';
 import { useEffect, useState } from 'react';
 import TransactionList from './All/TransactionList';
@@ -9,16 +7,16 @@ import IssuanceList from './Issuance/IssuanceList';
 import RetirementList from './RetirementList/RetirementList';
 import TransfersList from './Transfers/TransfersList';
 
-type CountType = {
-  tasks: number;
-};
+// type CountType = {
+//   tasks: number;
+// };
 
 const Transactions = () => {
   const { state }: any = useLocation();
   const [tab, setTab] = useState('BUSINESSLEADS');
-  const [count, setCount] = useState<CountType>({
-    tasks: 0,
-  });
+  // const [count, setCount] = useState<CountType>({
+  //   tasks: 0,
+  // });
 
   useEffect(() => {
     // fetchDashboardCount();
@@ -46,6 +44,7 @@ const Transactions = () => {
   return (
     <PageContainer title="TRANSACTIONS">
       <div>
+        <Title level={5}>A comprehensive overview of KCA Universitys transactions</Title>
         {/* <Title style={{ paddingLeft: '15px' }} level={3}>
           TRANSACTIONS
         </Title> */}

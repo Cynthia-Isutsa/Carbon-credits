@@ -13,7 +13,7 @@ export const PageHeader = ({ breadcrumbs, title, ...others }: Props) => {
     <div {...others}>
       <Space direction="vertical" size="small">
         <Typography.Title
-          level={4}
+          level={3}
           style={{ padding: 0, margin: 0, textTransform: 'capitalize' }}
         >
           {title}
