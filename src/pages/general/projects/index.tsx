@@ -1,21 +1,17 @@
 // import PageHeader from '@/components/PageHeader/PageHeader';
 import { PageHeader } from '@/components/PageHeader/PageHeader';
-import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
-import { Card } from 'antd';
-import { Helmet } from 'react-helmet-async';
+import { HomeOutlined, PlusOutlined } from '@ant-design/icons';
+import { useNavigate } from '@umijs/max';
+import { Button, Card } from 'antd';
 
 function Projects() {
+  const navigate = useNavigate();
   const companyProfile = {
     title: 'Reforestation Initiative',
-    
   };
 
   return (
     <div>
-      <Helmet>
-        <title>Projects</title>
-      </Helmet>
-
       <PageHeader
         title="Available Projects"
         breadcrumbs={[
@@ -28,25 +24,37 @@ function Projects() {
             ),
             path: '/',
           },
-          {
-            title: (
-              <>
-                <PieChartOutlined />
-                <span>dashboard</span>
-              </>
-            ),
-          },
+          // {
+          //   title: (
+          //     <>
+          //       <PieChartOutlined />
+          //       <span>dashboard</span>
+          //     </>
+          //   ),
+          // },
           {
             title: 'Projects',
           },
         ]}
-      />
-
-      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: 20, backgroundColor: "#D1FFBD" }}>
+      ></PageHeader>
+      <div style={{ marginBottom: 16, textAlign: 'right' }}>
+        <Button type="primary" icon={<PlusOutlined /> } onClick={() => navigate('/general/projects/onboard')}>
+          Add a Project
+        </Button>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          gap: '10px',
+          justifyContent: 'center',
+          marginTop: 20,
+          backgroundColor: '#D1FFBD',
+        }}
+      >
         <Card
           title={<span style={{ fontSize: '1.2rem' }}>Clean Energy Program</span>}
           bordered={false}
-          style={{ width: '80%', maxWidth: 600 , }}
+          style={{ width: '80%', maxWidth: 600 }}
         >
           <p style={{ fontSize: '1rem' }}>
             <strong>Location:</strong> Nairobi, Kenya
@@ -107,7 +115,15 @@ function Projects() {
         </Card>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: 20 , backgroundColor: "#D1FFBD"}}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '10px',
+          justifyContent: 'center',
+          marginTop: 20,
+          backgroundColor: '#D1FFBD',
+        }}
+      >
         <Card
           title={<span style={{ fontSize: '1.2rem' }}>Water Conservation Project</span>}
           bordered={false}
