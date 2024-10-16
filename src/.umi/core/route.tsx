@@ -4,7 +4,7 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"/user","layout":false,"id":"1"},"2":{"path":"/user/login","layout":false,"name":"login","parentId":"1","id":"2"},"3":{"path":"/user","redirect":"/user/login","parentId":"1","id":"3"},"4":{"name":"register-result","icon":"smile","path":"/user/register-result","parentId":"1","id":"4"},"5":{"name":"register","icon":"smile","path":"/user/register","parentId":"1","id":"5"},"6":{"path":"/user/*","parentId":"1","id":"6"},"7":{"path":"/general","name":"General","icon":"dashboard","parentId":"ant-design-pro-layout","id":"7"},"8":{"path":"/general","redirect":"/general/profile","parentId":"7","id":"8"},"9":{"name":"Profile","icon":"smile","path":"/general/profile","parentId":"7","id":"9"},"10":{"name":"Projects","icon":"smile","path":"/general/projects","parentId":"7","id":"10"},"11":{"name":" Users","icon":"smile","path":"/general/users","parentId":"7","id":"11"},"12":{"name":" Settings","icon":"smile","path":"/general/settings","parentId":"7","id":"12"},"13":{"path":"/form","icon":"form","name":"Credits","parentId":"ant-design-pro-layout","id":"13"},"14":{"path":"/form","redirect":"/form/basic-form","parentId":"13","id":"14"},"15":{"name":"Transactions","icon":"smile","path":"/form/basic-form","parentId":"13","id":"15"},"16":{"name":"Inventory","icon":"smile","path":"/form/step-form","parentId":"13","id":"16"},"17":{"name":"Retirements","icon":"smile","path":"/form/advanced-form","parentId":"13","id":"17"},"18":{"name":"Retirements","icon":"smile","path":"/form/advanced-form","parentId":"13","id":"18"},"19":{"path":"/","redirect":"/dashboard/analysis","parentId":"ant-design-pro-layout","id":"19"},"20":{"path":"/*","parentId":"ant-design-pro-layout","id":"20"},"ant-design-pro-layout":{"id":"ant-design-pro-layout","path":"/","isLayout":true},"umi/plugin/openapi":{"path":"/umi/plugin/openapi","id":"umi/plugin/openapi"}} as const;
+  const routes = {"1":{"path":"/user","layout":false,"id":"1"},"2":{"path":"/user/login","layout":false,"name":"login","parentId":"1","id":"2"},"3":{"path":"/user","redirect":"/user/login","parentId":"1","id":"3"},"4":{"name":"register-result","icon":"smile","path":"/user/register-result","parentId":"1","id":"4"},"5":{"name":"register","icon":"smile","path":"/user/register","parentId":"1","id":"5"},"6":{"path":"/user/*","parentId":"1","id":"6"},"7":{"path":"/general","name":"General","icon":"dashboard","parentId":"ant-design-pro-layout","id":"7"},"8":{"path":"/general","redirect":"/general/profile","parentId":"7","id":"8"},"9":{"name":"Profile","icon":"smile","path":"/general/profile","parentId":"7","id":"9"},"10":{"name":"Projects","icon":"smile","path":"/general/projects","parentId":"7","id":"10"},"11":{"name":" Users","icon":"smile","path":"/general/users","parentId":"7","id":"11"},"12":{"name":" Retirements","icon":"smile","path":"/general/retirements","parentId":"7","id":"12"},"13":{"name":" Warehouse","icon":"smile","path":"/general/warehouse","parentId":"7","id":"13"},"14":{"name":" Settings","icon":"smile","path":"/general/settings","parentId":"7","id":"14"},"15":{"path":"/form","icon":"form","name":"Credits","parentId":"ant-design-pro-layout","id":"15"},"16":{"path":"/form","redirect":"/form/basic-form","parentId":"15","id":"16"},"17":{"name":"Transactions","icon":"smile","path":"/form/basic-form","parentId":"15","id":"17"},"18":{"name":"Inventory","icon":"smile","path":"/form/step-form","parentId":"15","id":"18"},"19":{"name":"Retirements","icon":"smile","path":"/form/advanced-form","parentId":"15","id":"19"},"20":{"name":"Retirements","icon":"smile","path":"/form/advanced-form","parentId":"15","id":"20"},"21":{"path":"/","redirect":"/dashboard/analysis","parentId":"ant-design-pro-layout","id":"21"},"22":{"path":"/*","parentId":"ant-design-pro-layout","id":"22"},"ant-design-pro-layout":{"id":"ant-design-pro-layout","path":"/","isLayout":true},"umi/plugin/openapi":{"path":"/umi/plugin/openapi","id":"umi/plugin/openapi"}} as const;
   return {
     routes,
     routeComponents: {
@@ -19,15 +19,17 @@ export async function getRoutes() {
 '9': React.lazy(() => import(/* webpackChunkName: "p__general__profile__index" */'@/pages/general/profile/index.tsx')),
 '10': React.lazy(() => import(/* webpackChunkName: "p__general__projects__index" */'@/pages/general/projects/index.tsx')),
 '11': React.lazy(() => import(/* webpackChunkName: "p__general__users__index" */'@/pages/general/users/index.tsx')),
-'12': React.lazy(() => import(/* webpackChunkName: "p__general__settings__index" */'@/pages/general/settings/index.tsx')),
-'13': React.lazy(() => import('./EmptyRoute')),
-'14': React.lazy(() => import('./EmptyRoute')),
-'15': React.lazy(() => import(/* webpackChunkName: "p__form__basic-form__index" */'@/pages/form/basic-form/index.tsx')),
-'16': React.lazy(() => import(/* webpackChunkName: "p__form__step-form__index" */'@/pages/form/step-form/index.tsx')),
-'17': React.lazy(() => import(/* webpackChunkName: "p__form__advanced-form__index" */'@/pages/form/advanced-form/index.tsx')),
-'18': React.lazy(() => import(/* webpackChunkName: "p__form__advanced-form__index" */'@/pages/form/advanced-form/index.tsx')),
-'19': React.lazy(() => import('./EmptyRoute')),
-'20': React.lazy(() => import(/* webpackChunkName: "p__404" */'@/pages/404.tsx')),
+'12': React.lazy(() => import(/* webpackChunkName: "p__general__retirements__index" */'@/pages/general/retirements/index.tsx')),
+'13': React.lazy(() => import(/* webpackChunkName: "p__general__warehouse__index" */'@/pages/general/warehouse/index.tsx')),
+'14': React.lazy(() => import(/* webpackChunkName: "p__general__settings__index" */'@/pages/general/settings/index.tsx')),
+'15': React.lazy(() => import('./EmptyRoute')),
+'16': React.lazy(() => import('./EmptyRoute')),
+'17': React.lazy(() => import(/* webpackChunkName: "p__form__basic-form__index" */'@/pages/form/basic-form/index.tsx')),
+'18': React.lazy(() => import(/* webpackChunkName: "p__form__step-form__index" */'@/pages/form/step-form/index.tsx')),
+'19': React.lazy(() => import(/* webpackChunkName: "p__form__advanced-form__index" */'@/pages/form/advanced-form/index.tsx')),
+'20': React.lazy(() => import(/* webpackChunkName: "p__form__advanced-form__index" */'@/pages/form/advanced-form/index.tsx')),
+'21': React.lazy(() => import('./EmptyRoute')),
+'22': React.lazy(() => import(/* webpackChunkName: "p__404" */'@/pages/404.tsx')),
 'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'/home/pathways/carbon-credit/src/.umi/plugin-layout/Layout.tsx')),
 'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'/home/pathways/carbon-credit/src/.umi/plugin-openapi/openapi.tsx')),
 },

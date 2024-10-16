@@ -71,6 +71,18 @@ export default [
         component: './general/users',
       },
       {
+        name: ' Retirements',
+        icon: 'smile',
+        path: '/general/retirements',
+        component: './general/retirements',
+      },
+      {
+        name: ' Warehouse',
+        icon: 'smile',
+        path: '/general/warehouse',
+        component: './general/warehouse',
+      },
+      {
         name: ' Settings',
         icon: 'smile',
         path: '/general/settings',
