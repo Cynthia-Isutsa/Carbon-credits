@@ -1,4 +1,4 @@
-import { EditOutlined, ExportOutlined, EyeFilled, FilterOutlined} from '@ant-design/icons';
+import { DeleteOutlined, DownOutlined, EditOutlined, ExportOutlined, EyeFilled, FilterOutlined, SendOutlined} from '@ant-design/icons';
 import { ActionType, ProColumns, ProTable, TableDropdown } from '@ant-design/pro-components';
 import { useNavigate } from '@umijs/max';
 import { Button, Col, Row } from 'antd';
@@ -67,46 +67,64 @@ const RetirementList = () => {
         //   });
       }
     };
+
+    const retirementsData = [
+      {
+        key: '1',
+        id: '001',
+        sender: 'Kenya Carbon Solutions',
+        receipient: 'Project Developer',
+        project: 'Pathways Carbon Climate Action',
+        timestamp: '16:13:43',
+        amount: '2500',
+        types: 'Ex-Post',
+        status: 'Active',
+        comment: '',
+        reason: '',
+        beneficiary: ''
+      },
+     
+    ];
   
     const columns: ProColumns[] = [
       {
         title: 'Transaction Id',
-        dataIndex: 'customerCode',
+        dataIndex: 'id',
         key: 'customerCode',
       },
       {
         title: 'Recipient',
-        dataIndex: 'name',
+        dataIndex: 'receipient',
         key: 'name',
       },
       {
         title: 'Project',
-        dataIndex: 'creationTime',
+        dataIndex: 'project',
         key: 'creationTime',
       },
       {
         title: 'Timestamp',
-        dataIndex: 'creationTime',
+        dataIndex: 'timestamp',
         key: 'creationTime',
       },
       {
         title: 'Amount',
-        dataIndex: 'creationTime',
+        dataIndex: 'amount',
         key: 'creationTime',
       },
       {
         title: 'Beneficiary',
-        dataIndex: 'creationTime',
+        dataIndex: 'beneficiary',
         key: 'creationTime',
       },
       {
         title: 'Reason',
-        dataIndex: 'creationTime',
+        dataIndex: 'reason',
         key: 'creationTime',
       },
       {
         title: 'Comment',
-        dataIndex: 'creationTime',
+        dataIndex: 'comment',
         key: 'creationTime',
       },
       {
@@ -119,34 +137,42 @@ const RetirementList = () => {
             onSelect={(key: string) => selectedMenuItem(key, record)}
             menus={[
               {
-                key: 'view',
+                key: 'Transfer',
                 name: (
                   <div style={{ padding: '0px 5px' }}>
-                    <EyeFilled style={{ paddingRight: 5 }} /> {''}
-                    View
+                    <SendOutlined style={{ paddingRight: 5 }} /> {''}
+                    Tranfer
                   </div>
                 ),
               },
               {
-                key: 'edit',
+                key: 'Retire',
                 name: (
                   <div style={{ padding: '0px 5px' }}>
-                    <EditOutlined style={{ paddingRight: 5 }} /> {''}
-                    Edit
+                    <DownOutlined style={{ paddingRight: 5 }} /> {''}
+                    Retire
+                  </div>
+                ),
+              },
+              {
+                key: 'Cancel',
+                name: (
+                  <div style={{ padding: '0px 5px' }}>
+                    <DeleteOutlined style={{ paddingRight: 5 }} /> {''}
+                    Cancel
                   </div>
                 ),
               },
   
-            //   {
-            //     key: 'activate',
-            //     name: (
-            //       <div style={{ padding: '0px 5px' }}>
-            //         <FileDoneOutlined style={{ paddingRight: 5 }} /> {''}
-            //         Activate
-            //       </div>
-            //     ),
-            //   },
-  
+              //   {
+              //     key: 'activate',
+              //     name: (
+              //       <div style={{ padding: '0px 5px' }}>
+              //         <FileDoneOutlined style={{ paddingRight: 5 }} /> {''}
+              //         Activate
+              //       </div>
+              //     ),
+              //   },
             ]}
           />,
         ],
@@ -222,19 +248,7 @@ const RetirementList = () => {
           options={false}
           columns={columns}
           actionRef={tableActionRef}
-        //   request={async (params: any) => {
-        //     return fetchCustomers({
-        //       params: {
-        //         page: Math.round(params?.current - 1),
-        //         type: 'LEAD',
-        //         ...(searchParam.length > 2 && { search: searchParam }),
-        //         size: params.pageSize,
-        //         customerDivision: customerDivision,
-        //         ...params,
-        //         ...filters,
-        //       },
-        //     });
-        //   }}
+          dataSource={retirementsData}
           search={false}
           rowKey="publicId"
         />
