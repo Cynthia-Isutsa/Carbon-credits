@@ -1,9 +1,10 @@
 import {
-  EditOutlined,
+  DeleteOutlined,
+  DownOutlined,
   ExportOutlined,
-  EyeFilled,
   FilterOutlined,
   PlusOutlined,
+  SendOutlined,
 } from '@ant-design/icons';
 import {
   ActionType,
@@ -12,7 +13,7 @@ import {
   ProTable,
   TableDropdown,
 } from '@ant-design/pro-components';
-import { Button, Col, Row, Space, Tag } from 'antd';
+import { Button, Col, Row, Tag } from 'antd';
 import Search from 'antd/es/input/Search';
 import Title from 'antd/es/typography/Title';
 import { useRef } from 'react';
@@ -36,69 +37,107 @@ const Inventory = () => {
     ) {
     }
   };
+
+  const inventoryData = [
+    {
+      key: '1',
+      id: '001',
+      sender: 'Kenya Carbon Solutions',
+      receipient: 'Project Developer',
+      project: 'Pathways Carbon Climate Action',
+      timestamp: '16:13:43',
+      amount: '2500',
+      vintage: '2021',
+      types: 'Ex-Post',
+      status: 'Active',
+    },
+    {
+      key: '2',
+      id: '002',
+      sender: 'Lamba Carbon Solutions',
+      receipient: 'Project Developer',
+      project: 'Efficient Cooking Stoves Action',
+      timestamp: '16:13:43',
+      amount: '65200M',
+      vintage: '2021',
+      types: 'Ex-Ante',
+      status: 'Pending',
+    },
+    {
+      key: '3',
+      id: '003',
+      sender: 'Asia Carbon Solutions',
+      receipient: 'Project Developer',
+      project: 'Deforestation Carbon Climate Action',
+      timestamp: '17:13:43',
+      amount: '450200M',
+      vintage: '2021',
+      types: 'Ex-Ante',
+      status: 'Active',
+    },
+    {
+      key: '4',
+      id: '004',
+      sender: 'Senegal Carbon Solutions',
+      receipient: 'Project Developer',
+      project: 'arbon Climate Action',
+      timestamp: '16:13:43',
+      amount: '2500',
+      vintage: '2024',
+      types: 'Ex-Post',
+      status: 'Pending',
+    },
+  ];
   const columns: ProColumns[] = [
     {
       title: 'Transaction Id',
-      dataIndex: 'customerCode',
+      dataIndex: 'id',
       key: 'customerCode',
     },
     {
       title: 'Sender',
-      dataIndex: 'name',
+      dataIndex: 'sender',
       key: 'name',
     },
     {
       title: 'Receipient',
-      dataIndex: 'creationTime',
+      dataIndex: 'receipient',
       key: 'creationTime',
     },
     {
       title: 'Project',
-      dataIndex: 'creationTime',
+      dataIndex: 'project',
       key: 'creationTime',
     },
     {
       title: 'Timestamp',
-      dataIndex: 'creationTime',
+      dataIndex: 'timestamp',
       key: 'creationTime',
     },
     {
       title: 'Amount',
-      dataIndex: 'creationTime',
+      dataIndex: 'amount',
       key: 'creationTime',
     },
     {
       title: 'Vintage',
-      dataIndex: 'creationTime',
+      dataIndex: 'vintage',
       key: 'creationTime',
     },
     {
       title: 'Types',
-      dataIndex: 'creationTime',
+      dataIndex: 'types',
       key: 'creationTime',
     },
     {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      render(_, record) {
-        const colorStatus = ['NEW'].includes(record.status)
-          ? { backGround: '#fffadd', color: 'rgba(250, 140, 22, 1)' }
-          : ['INCOMPLETE'].includes(record.status)
-            ? { backGround: '#E6F7FF', color: '#1890FF' }
-            : ['COMPLETE', 'CONFIRMED', 'APPROVED', 'ACTIVE'].includes(record.status)
-              ? { backGround: 'rgba(246, 255, 237, 1)', color: 'rgba(82, 196, 26, 1)' }
-              : { backGround: 'rgba(255, 241, 240, 1)', color: 'rgba(245, 34, 45, 1)' };
-        return (
-          <Space>
-            <Tag color={colorStatus.backGround}>
-              {/* <span style={{ color: colorStatus.color, padding: 10 }}>
-                    {toPascalCase(record.status)}
-                  </span> */}
-            </Tag>
-          </Space>
-        );
-      },
+      render: (_, record) => (
+        <Tag color={record.status === 'Active' ? 'green' : 'volcano'}>
+          {record.status.toUpperCase()}
+        </Tag>
+      ),
     },
     {
       title: 'Actions',
@@ -110,20 +149,29 @@ const Inventory = () => {
           onSelect={(key: string) => selectedMenuItem(key, record)}
           menus={[
             {
-              key: 'view',
+              key: 'Transfer',
               name: (
                 <div style={{ padding: '0px 5px' }}>
-                  <EyeFilled style={{ paddingRight: 5 }} /> {''}
-                  View
+                  <SendOutlined style={{ paddingRight: 5 }} /> {''}
+                  Tranfer
                 </div>
               ),
             },
             {
-              key: 'edit',
+              key: 'Retire',
               name: (
                 <div style={{ padding: '0px 5px' }}>
-                  <EditOutlined style={{ paddingRight: 5 }} /> {''}
-                  Edit
+                  <DownOutlined style={{ paddingRight: 5 }} /> {''}
+                  Retire
+                </div>
+              ),
+            },
+            {
+              key: 'Cancel',
+              name: (
+                <div style={{ padding: '0px 5px' }}>
+                  <DeleteOutlined style={{ paddingRight: 5 }} /> {''}
+                  Cancel
                 </div>
               ),
             },
@@ -145,7 +193,10 @@ const Inventory = () => {
   return (
     <PageContainer title="INVENTORY">
       <>
-        <Title level={5}>An overview of your entire carbon credit inventory, including both ex-post and ex-ante credits</Title>
+        <Title level={5}>
+          An overview of your entire carbon credit inventory, including both ex-post and ex-ante
+          credits
+        </Title>
         <Row>
           <Col xs={24} sm={12} md={8} lg={11}>
             <Search
@@ -213,6 +264,7 @@ const Inventory = () => {
           options={false}
           columns={columns}
           actionRef={tableActionRef}
+          dataSource={inventoryData}
           // request={async (params: any) => {
           //   return fetchCustomers({
           //     params: {
