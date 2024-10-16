@@ -1,4 +1,4 @@
-import { EditOutlined, ExportOutlined, EyeFilled, FilterOutlined} from '@ant-design/icons';
+import { DeleteOutlined, DownOutlined, EditOutlined, ExportOutlined, EyeFilled, FilterOutlined, SendOutlined} from '@ant-design/icons';
 import { ActionType, ProColumns, ProTable, TableDropdown } from '@ant-design/pro-components';
 import { useNavigate } from '@umijs/max';
 import { Button, Col, Row, Space, Tag } from 'antd';
@@ -67,55 +67,82 @@ const IssuanceList = () => {
         //   });
       }
     };
+
+    const issuancesData = [
+      {
+        key: '1',
+        id: '001',
+        sender: 'Kenya Carbon Solutions',
+        receipient: 'Project Developer',
+        project: 'Pathways Carbon Climate Action',
+        timestamp: '16:13:43',
+        amount: '2500',
+        types: 'Ex-Post',
+        tx:'',
+        status: 'Active'
+      },
+      {
+        key: '1',
+        id: '001',
+        sender: 'Kenya Carbon Solutions',
+        receipient: 'Project Developer',
+        project: 'Carbon Climate Action',
+        timestamp: '16:13:43',
+        amount: '2500',
+        types: 'Ex-Ante',
+        tx:'',
+        status: 'Active'
+      },
+      {
+        key: '3',
+        id: '003',
+        sender: 'Carbon Solutions',
+        receipient: 'Project Developer',
+        project: 'Deforestation Climate Action',
+        timestamp: '16:13:43',
+        amount: '2500',
+        types: 'Ex-Post',
+        tx:'',
+        status: 'Pending'
+      },
+     
+    ];
   
     const columns: ProColumns[] = [
       {
         title: 'Project',
-        dataIndex: 'customerCode',
+        dataIndex: 'project',
         key: 'customerCode',
       },
       {
         title: 'TimeStamp',
-        dataIndex: 'name',
+        dataIndex: 'timestamp',
         key: 'name',
       },
       {
         title: 'Amount',
-        dataIndex: 'creationTime',
+        dataIndex: 'amount',
         key: 'creationTime',
       },
       {
         title: 'Types',
-        dataIndex: 'creationTime',
+        dataIndex: 'types',
         key: 'creationTime',
       },
       {
         title: 'Tx',
-        dataIndex: 'creationTime',
+        dataIndex: 'tx',
         key: 'creationTime',
       },
       {
         title: 'Status',
         dataIndex: 'status',
         key: 'status',
-        render(_, record) {
-          const colorStatus = ['NEW'].includes(record.status)
-            ? { backGround: '#fffadd', color: 'rgba(250, 140, 22, 1)' }
-            : ['INCOMPLETE'].includes(record.status)
-            ? { backGround: '#E6F7FF', color: '#1890FF' }
-            : ['COMPLETE', 'CONFIRMED', 'APPROVED', 'ACTIVE'].includes(record.status)
-            ? { backGround: 'rgba(246, 255, 237, 1)', color: 'rgba(82, 196, 26, 1)' }
-            : { backGround: 'rgba(255, 241, 240, 1)', color: 'rgba(245, 34, 45, 1)' };
-          return (
-            <Space>
-              <Tag color={colorStatus.backGround}>
-                {/* <span style={{ color: colorStatus.color, padding: 10 }}>
-                  {toPascalCase(record.status)}
-                </span> */}
-              </Tag>
-            </Space>
-          );
-        },
+        render: (_, record) => (
+          <Tag color={record.status === 'Active' ? 'green' : 'volcano'}>
+            {record.status.toUpperCase()}
+          </Tag>
+        )
       },
       {
         title: 'Actions',
@@ -127,34 +154,42 @@ const IssuanceList = () => {
             onSelect={(key: string) => selectedMenuItem(key, record)}
             menus={[
               {
-                key: 'view',
+                key: 'Transfer',
                 name: (
                   <div style={{ padding: '0px 5px' }}>
-                    <EyeFilled style={{ paddingRight: 5 }} /> {''}
-                    View
+                    <SendOutlined style={{ paddingRight: 5 }} /> {''}
+                    Tranfer
                   </div>
                 ),
               },
               {
-                key: 'edit',
+                key: 'Retire',
                 name: (
                   <div style={{ padding: '0px 5px' }}>
-                    <EditOutlined style={{ paddingRight: 5 }} /> {''}
-                    Edit
+                    <DownOutlined style={{ paddingRight: 5 }} /> {''}
+                    Retire
+                  </div>
+                ),
+              },
+              {
+                key: 'Cancel',
+                name: (
+                  <div style={{ padding: '0px 5px' }}>
+                    <DeleteOutlined style={{ paddingRight: 5 }} /> {''}
+                    Cancel
                   </div>
                 ),
               },
   
-            //   {
-            //     key: 'activate',
-            //     name: (
-            //       <div style={{ padding: '0px 5px' }}>
-            //         <FileDoneOutlined style={{ paddingRight: 5 }} /> {''}
-            //         Activate
-            //       </div>
-            //     ),
-            //   },
-  
+              //   {
+              //     key: 'activate',
+              //     name: (
+              //       <div style={{ padding: '0px 5px' }}>
+              //         <FileDoneOutlined style={{ paddingRight: 5 }} /> {''}
+              //         Activate
+              //       </div>
+              //     ),
+              //   },
             ]}
           />,
         ],
@@ -230,6 +265,7 @@ const IssuanceList = () => {
           options={false}
           columns={columns}
           actionRef={tableActionRef}
+          dataSource={issuancesData}
         //   request={async (params: any) => {
         //     return fetchCustomers({
         //       params: {
