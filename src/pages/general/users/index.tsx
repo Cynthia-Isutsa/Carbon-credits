@@ -2,9 +2,12 @@
 import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { HomeOutlined, PieChartOutlined } from '@ant-design/icons';
 import { Card, Input, Table, Tag } from 'antd';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 function Users() {
+
+  const [visible, setVisible] = useState(false);
   const usersData = [
     {
       key: '1',
@@ -61,6 +64,13 @@ function Users() {
       investedProjects: 3,
     },
   ];
+
+  const handleAddCredit = (values) => {
+    setData([...data, { key: Date.now(), ...values }]);
+    setVisible(false);
+    form.resetFields();
+    message.success('Carbon credit added successfully!');
+  };
   
   const columns = [
     {
