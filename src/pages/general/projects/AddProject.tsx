@@ -15,27 +15,17 @@ import {
 } from '@ant-design/pro-components';
 import { history } from '@umijs/max';
 import type { UploadFile } from 'antd';
-import { Alert, Breadcrumb, Divider, List, Row, Segmented, Space, Typography } from 'antd';
+import { Alert, Breadcrumb, Card, Col, Divider, Row, Segmented, Space, Typography } from 'antd';
 import React, { useRef, useState } from 'react';
 
-//   import { fetchCountries } from '@/pages/Business/service';
-//   import Attachment from '@/pages/Members/components/Attachment';
-//   import EnrolmentAnswers from '@/pages/Members/components/EnrolmentAnswers';
-//   import { queryCoverCategory, querySchemePolicyPeriod } from '@/pages/Members/services';
-//   import { uploadDocument } from '@/pages/Provider/Provider/services/ProviderService';
-//   import { querySchemeRules } from '@/pages/Scheme/Schemes/services/services';
-//   import { formatNumber } from '@/utils/helpers';
 import {
-  CheckCircleOutlined,
   FileDoneOutlined,
   FileOutlined,
   QuestionCircleOutlined,
   VerifiedOutlined,
 } from '@ant-design/icons';
 import type { DefaultOptionType } from 'antd/lib/select';
-//   import { updateAnswers } from '../EnrollmentQuestions/services/EnrollmentQuestionsService';
-//   import { createMembers, queryDepartments, querySchemes } from '../services/MemberService';
-//   import './styles.less';
+
 export type DocumentParams = {
   schemePublicId: string;
   dependantType: string;
@@ -47,6 +37,13 @@ export type DocumentParams = {
 export default function AddProject() {
   const [fileList, setFileList] = React.useState<UploadFile | any>([]);
 
+    const [stepData, setStepData] = useState({
+      details: {},
+      attachments: {},
+      quiz: {},
+      profile: {},
+    });
+
   const fullForm = useRef<ProFormInstance>();
   const step1Ref: any = useRef<ProFormInstance>();
   const step3Ref = useRef<ProFormInstance>();
@@ -57,15 +54,7 @@ export default function AddProject() {
   const [schemeName, setSchemeName] = useState<any>();
   const [isDisabled, setIsDisable] = useState<boolean>(false);
 
-  // const [key, setKey] = useState(0);
-
   const [divisionType, setDivisionType] = useState<string>('');
-
-  //const [departmentsDate, setDepartmentsDate] = useState<string | null>(null);
-  // const [locationsDate, setLocationsDate] = useState<string | null>(null);
-  // const [branchDate, setBranchDate] = useState<string | null>(null);
-  // const [costCenterDate, setCostCenterDate] = useState<string | null>(null);
-  // const [coverType, setCoverType] = useState<string>('Location');
 
   const [costSelectKey, setCostSelectKey] = useState<number>(Math.random());
 
@@ -79,8 +68,7 @@ export default function AddProject() {
   const [schemeCovers, setSchemeCovers] = React.useState<any[]>();
 
   const [dob, setDOB] = React.useState<any>();
-  //const [dob, setDOB] = React.useState<moment.Moment | null>(null);
-  //moment('1990-01-01', 'YYYY-MM-DD')
+
   const [joinDate, setJoinDate] = React.useState<any>();
 
   const [errText, setErrText] = React.useState<string | undefined>(undefined);
@@ -96,6 +84,20 @@ export default function AddProject() {
     dob: dob,
   });
 
+const step1Data ={
+  headline: "GHG Program",
+  fullNames: "Clean Energy Program",
+  description: "Promoting solar energy systems to reduce reliance on fossil fuels.",
+  ptojectType: "Grouped",
+  Website: "projectGHC.com",
+
+  sector: "Chemical Industry",
+  Methodology: "ISO 14064-6744RE- 56734G-3",
+  sectorTwo: "Industries"
+
+}
+const [step3Data, setStep3Data] = useState({});
+
   React.useEffect(() => {
     if (schemesId && dob) {
       setParams({
@@ -108,102 +110,7 @@ export default function AddProject() {
     }
   }, [schemesId, isDisabled, dob]);
 
-  // const { data } = useRequest(fetchCountries);
-
   let formattedData: DefaultOptionType[] | undefined = [];
-
-  // if (data) {
-  //   formattedData = Object.keys(data && data)?.map((key) => {
-  //     return {
-  //       ...data[key],
-  //       label: data[key]?.countryName,
-  //       value: data[key]?.countryName,
-  //       //type: 'country',
-  //     };
-  //   });
-  // }
-
-  // async function fetchSchemeRules() {
-  //   //setLoading(true);
-  //   const response = await querySchemeRules(schemesId);
-
-  //   setCurrentSchemeRules(response?.content || []);
-  //   // setFormKey(Math.random());
-  //   // setLoading(false);
-  // }
-  // const ageLimitRule = currentSchemeRules.find((rule: any) => rule.schemeRuleType === 'AgeLimit');
-
-  // const index = ageLimitRule.definitions.findIndex((item: any) => item.dependantType === 'PrincipalMember');
-
-  // useEffect(() => {
-  //   if (schemesId) fetchSchemeRules();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [schemesId]);
-
-  // const { data: schemePolicyPeriod, loading: schemePolicyPeriodLoading }: any = useRequest(
-  //   async () => {
-  //     let response;
-  //     if (schemesId) {
-  //       response = await querySchemePolicyPeriod(schemesId, { status: 'Active' });
-  //     }
-  //     return response ?? [];
-  //   },
-  //   { refreshDeps: [schemesId] },
-  // );
-
-  // async function fetchDivisions() {
-  //   let data2 = [];
-  //   const response = await queryDepartments({
-  //     departmentType: divisionType,
-  //     schemePublicId: schemesId,
-  //     schemePolicyPublicId: schemePolicy,
-  //   });
-  //   if (response && response.content) {
-  //     data2 = response.content;
-  //     setDivision(data2);
-  //   }
-  //   return data2;
-  // }
-
-  // function handleMandatory() {
-  //   const mandatory = Divisions.map((div: any) => div?.isMandatory ?? false);
-  //   setIsMandatory(mandatory[0]);
-  // }
-
-  // useEffect(() => {
-  //   handleMandatory();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [divisionType]);
-
-  // useEffect(() => {
-  //   if (divisionType) fetchDivisions();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [divisionType]);
-
-  // React.useEffect(() => {
-  //   if (dob && joinDate && joinDate < dob) {
-  //     setErrText("Joined date shouldn't be before the date of birth! Update to proceed");
-  //   } else {
-  //     setErrText(undefined);
-  //   }
-  // }, [dob, joinDate]);
-
-  // React.useEffect(() => {
-  //   step3Ref.current?.resetFields(['editionPublicId']);
-  //   step3Ref.current?.resetFields(['schemePolicyPeriodPublicId']);
-  // }, [schemesId, schemePolicyPeriod]);
-
-  // React.useEffect(() => {
-  //   step3Ref.current?.resetFields(['editionPublicId']);
-  // }, [schemePolicy]);
-
-  // React.useEffect(() => {
-  //   step3Ref.current?.resetFields(['divisionName']);
-  // }, [divisionType]);
-
-  // const dateOfBirthValue = step1Ref.current?.getFieldValue('dateOfBirth')
-  //   ? step1Ref.current?.getFieldValue('dateOfBirth').format('DD/MM/YYYY')
-  //   : null;
 
   return (
     <PageContainer
@@ -236,77 +143,6 @@ export default function AddProject() {
         <StepsForm
           formRef={fullForm}
           containerStyle={{ width: '100%' }}
-          // onFinish={async (v) => {
-          //   const {
-          //     editionPublicId,
-          //     consents,
-          //     schemePolicyPeriodPublicId,
-          //     schemePublicId,
-          //     memberDivisions,
-          //     ...rest
-          //   } = v;
-
-          //   const memberDiv = memberDivisions.map((division: any) => {
-          //     return {
-          //       ...division,
-          //       departmentType: division?.departmentType?.value,
-          //       divisionName: division?.divisionName?.value,
-          //       isMandatory: isMandatory,
-          //     };
-          //   });
-          //   // let response: any;
-          //   try {
-          //     const response = await createMembers({
-          //       ...rest,
-          //       vip: consents?.includes('vip'),
-          //       surveyConsent: consents?.includes('surveyConsent'),
-          //       cdmConsent: consents?.includes('cdmConsent'),
-          //       coverPlan: {
-          //         schemePublicIds: [v?.schemePublicId],
-          //         editionPublicId: v?.editionPublicId ?? editionPublicId[0],
-          //         costCentrePublicId: v?.coveragePublicId,
-          //         schemePolicyPeriodPublicId: v?.schemePolicyPeriodPublicId,
-          //       },
-          //       //CHECK IF ITS CALLED membershipDivisions
-          //       memberDivisions: memberDiv,
-          //     });
-
-          //     if (response?.publicId) {
-          //       answers?.selected?.forEach(async (el: any) => {
-          //         await updateAnswers({
-          //           publicId: el?.publicId,
-          //           answer: true,
-          //           description: el?.answerDescription,
-          //           membershipPublicId: response?.publicId && response?.publicId,
-          //         });
-
-          //         setAnswers({});
-          //       });
-          //     }
-
-          //     if (response?.publicId) {
-          //       Object.values(fileList)
-          //         ?.flat()
-          //         ?.forEach(async (attachment: any) => {
-          //           if (attachment?.originFileObj) {
-          //             const formData = new FormData();
-          //             formData.append('file', attachment?.originFileObj);
-          //             formData.append('referenceId', response?.publicId);
-          //             formData.append('documentRulePublicId', attachment?.pid);
-
-          //             await uploadDocument({ data: formData });
-          //             // message.success(`Record Updated`);
-          //             setFileList([]);
-          //           }
-          //         });
-          //     }
-          //     message.success('Member created successfully');
-          //     history.push(`/membership/members/${response?.publicId}`);
-          //     return true;
-          //   } catch (error) {
-          //     return false;
-          //   }
-          // }}
           onCurrentChange={(e) => setCurrent(e)}
           stepsRender={(steps, def) => {
             return (
@@ -341,6 +177,7 @@ export default function AddProject() {
                       ),
                       value: 2,
                     },
+
                     {
                       label: (
                         <Space>
@@ -349,14 +186,14 @@ export default function AddProject() {
                       ),
                       value: 3,
                     },
-                    // {
-                    //   label: (
-                    //     <Space>
-                    //       <CheckCircleOutlined /> Summary
-                    //     </Space>
-                    //   ),
-                    //   value: 4,
-                    // },
+                    {
+                      label: (
+                        <Space>
+                          <QuestionCircleOutlined /> Profile
+                        </Space>
+                      ),
+                      value: 4,
+                    },
                   ]}
                 />
               </>
@@ -391,6 +228,7 @@ export default function AddProject() {
               </ProForm.Group>
             </Row>
           </StepsForm.StepForm>
+
           <StepsForm.StepForm
             formRef={step1Ref}
             name="details"
@@ -404,10 +242,7 @@ export default function AddProject() {
             labelCol={{ span: 6 }}
             wrapperCol={{ span: 18 }}
             labelAlign="left"
-            // style={{ maxWidth: 800 }}
           >
-            {/* <ProForm.Group> */}
-
             <ProFormText
               name="headline"
               label="Headline"
@@ -425,11 +260,7 @@ export default function AddProject() {
               label="Short Description"
               width="xl"
               placeholder="This is the project's public display name."
-              //   labelCol={{ span: 6 }}
-              //   wrapperCol={{ span: 18 }}
             />
-
-            {/* </ProForm.Group> */}
 
             <ProFormCheckbox
               name="disabled"
@@ -452,37 +283,20 @@ export default function AddProject() {
               </>
             )}
           </StepsForm.StepForm>
+
           <StepsForm.StepForm
-            // onFinish={async () => {
-            //   try {
-            //     if (missingRequired?.length > 0) {
-            //       setAttachmentErr(
-            //         missingRequired?.map((el) => el?.name).join(', ') + ' ' + 'is required',
-            //       );
-            //       return false;
-            //     }
-            //     setAttachmentErr(null);
-            //     return true;
-            //   } catch (error) {
-            //     return false;
-            //   }
-            // }}
             name="attachments"
             title="GHG Program and Start Date"
             layout="horizontal"
             labelCol={{ span: 6 }}
             wrapperCol={{ span: 18 }}
             labelAlign="left"
-            // style={{ maxWidth: 800 }}
           >
             <ProFormDatePicker
               width="xl"
               name="startDate"
               label="Start Date"
               placeholder="Start Date"
-              //   fieldProps={{
-              //     onSelect() {},
-              //   }}
             />
             <Divider />
             <CheckCard.Group style={{ width: '100%' }} size="small" defaultValue="new">
@@ -517,7 +331,6 @@ export default function AddProject() {
             labelCol={{ span: 6 }}
             wrapperCol={{ span: 18 }}
             labelAlign="left"
-            // onFinish={async (values) => {}}
           >
             <ProFormSelect
               name="sector"
@@ -543,24 +356,7 @@ export default function AddProject() {
                 'Carbon capture and storage',
                 'Other',
               ]}
-              // request={async ({ keyWords }) => {
-              //   const response = await queryDivision({
-              //     name: keyWords,
-              //   });
-              //   // @ts-ignore
-              //   return response?.content || [];
-              // }}
               placeholder="Select region"
-              // fieldProps={{
-              //   labelInValue: true,
-              //   fieldNames: {
-              //     label: 'regionName',
-              //     value: 'publicId',
-              //   },
-              //   optionItemRender(item) {
-              //     return item?.regionName;
-              //   },
-              // }}
               rules={[
                 {
                   required: true,
@@ -593,24 +389,7 @@ export default function AddProject() {
                 'Carbon capture and storage',
                 'Other',
               ]}
-              // request={async ({ keyWords }) => {
-              //   const response = await queryDivision({
-              //     name: keyWords,
-              //   });
-              //   // @ts-ignore
-              //   return response?.content || [];
-              // }}
               placeholder="Select region"
-              // fieldProps={{
-              //   labelInValue: true,
-              //   fieldNames: {
-              //     label: 'regionName',
-              //     value: 'publicId',
-              //   },
-              //   optionItemRender(item) {
-              //     return item?.regionName;
-              //   },
-              // }}
             />
             <Divider />
             <ProFormSelect
@@ -619,24 +398,7 @@ export default function AddProject() {
               showSearch
               debounceTime={300}
               options={['ISO 14064-2ISO 14064-2:']}
-              // request={async ({ keyWords }) => {
-              //   const response = await queryDivision({
-              //     name: keyWords,
-              //   });
-              //   // @ts-ignore
-              //   return response?.content || [];
-              // }}
               placeholder="Select region"
-              // fieldProps={{
-              //   labelInValue: true,
-              //   fieldNames: {
-              //     label: 'regionName',
-              //     value: 'publicId',
-              //   },
-              //   optionItemRender(item) {
-              //     return item?.regionName;
-              //   },
-              // }}
               rules={[
                 {
                   required: true,
@@ -645,62 +407,84 @@ export default function AddProject() {
               ]}
             />
           </StepsForm.StepForm>
-          {/* <StepsForm.StepForm name="summary">
-            <ProCard bordered>
-              <List
-                split
-                header="Member details"
-                dataSource={[
-                  { title: 'Title', value: step1Ref.current?.getFieldValue()?.title },
-                  { title: 'First name', value: step1Ref.current?.getFieldValue()?.firstName },
-                  { title: 'Surname', value: step1Ref.current?.getFieldValue()?.lastName },
-                  { title: 'Other name', value: step1Ref.current?.getFieldValue()?.otherNames },
-                  {
-                    title: 'DOB',
-                    //   value: dateOfBirthValue,
-                    //value: step1Ref.current?.getFieldValue()?.dateOfBirth,
-                  },
-                  {
-                    title: 'Country of Birth',
-                    value: step1Ref.current?.getFieldValue()?.birthCountry,
-                  },
-                  {
-                    title: 'Country of Residence',
-                    value: step1Ref.current?.getFieldValue()?.residenceCountry,
-                  },
-                  {
-                    title: 'City of Residence',
-                    value: step1Ref.current?.getFieldValue()?.residenceCity,
-                  },
-                  { title: 'Gender', value: step1Ref.current?.getFieldValue()?.gender },
-                  {
-                    title: 'Physical address',
-                    value: step1Ref.current?.getFieldValue()?.physicalAddress,
-                  },
-                  { title: 'Email', value: step1Ref.current?.getFieldValue()?.emailAddress },
-                  {
-                    title: 'Phone number',
-                    value: step1Ref.current?.getFieldValue()?.primaryPhoneNumber,
-                  },
-                  {
-                    title: 'Identification type',
-                    value: step1Ref.current?.getFieldValue()?.identificationType,
-                  },
-                  {
-                    title: 'Identification number',
-                    value: step1Ref.current?.getFieldValue()?.identification,
-                  },
-                ]}
-                renderItem={(e) => (
-                  <List.Item>
-                    <div>{e?.title} </div>
-                    <div>{e?.value ?? '-'}</div>
-                  </List.Item>
-                )}
-              />
-            </ProCard>
-            <br />
-          </StepsForm.StepForm> */}
+
+      
+
+<StepsForm.StepForm
+  formRef={step5Ref}
+  name="profile"
+  title="Profile"
+  onFinish={async () => {
+    console.log('Profile complete, form submitted');
+    return true;
+  }}
+  onLoad={() => {
+  }}
+  layout="horizontal"
+  labelCol={{ span: 6 }}
+  wrapperCol={{ span: 18 }}
+  labelAlign="left"
+>
+
+  <Col style={{display: "flex"}}>
+
+  <Card style={{width: "800px"}}>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>headline:</div>
+    <div>{step1Data.headline}</div> 
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>fullNames:</div>
+    <div>{step1Data.fullNames}</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>Last Name:</div>
+    <div>{step1Data.description}</div>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>description:</div>
+    <div>{step1Data.ptojectType}</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: "30px" }}>
+    <div style={{ width: '120px', margin: "9px", marginBottom: "15px" }}>Website:</div>
+    <div>{step1Data.Website}</div>
+  </div>
+  </Card>
+
+  <Card style={{width: "800px"}}>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>sector:</div>
+    <div>{step1Data.sector}</div> 
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>Methodology:</div>
+    <div>{step1Data.Methodology}</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>sectorTwo:</div>
+    <div>{step1Data.sectorTwo}</div>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120px', margin: "9px" }}>description:</div>
+    <div>{step1Data.ptojectType}</div>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: "30px" }}>
+    <div style={{ width: '120px', margin: "9px", marginBottom: "15px" }}>Website:</div>
+    <div>{step1Data.Website}</div>
+  </div>
+  </Card>
+  </Col>
+ 
+
+
+
+</StepsForm.StepForm>
+
+
+
+
         </StepsForm>
       </ProCard>
     </PageContainer>
