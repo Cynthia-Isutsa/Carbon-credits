@@ -143,7 +143,9 @@ function Projects() {
                         icon={<EyeOutlined />}
                         onClick={(e) => {
                           e.stopPropagation();
+                          // navigate('/general/projects/clean-energy/details');
                           navigate('/general/projects/clean-energy/details');
+
                         }}
                       >
                         View Details
