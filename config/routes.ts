@@ -72,6 +72,13 @@ export default [
         hideInMenu: true,
       },
       {
+        name: 'ViewProjects',
+        icon: 'smile',
+        path: '/general/projects/:id',
+        component: './general/projects/$id',
+        hideInMenu: true,
+      },
+      {
         name: ' Users',
         icon: 'smile',
         path: '/general/users',
