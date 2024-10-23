@@ -1,3 +1,32 @@
-dist
-node_modules/
 .DS_Store
+
+
+# Dependency directories
+node_modules/
+
+# Build outputs
+/build
+/dist
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Additional 
+src/.umi
+
+# Will revisit the yarn lock later
+yarn.lock  
