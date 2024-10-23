@@ -1,6 +1,9 @@
 import { Card, Col, Row, Tabs, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
 
+const { Title } = Typography;
+
+
 const { TabPane } = Tabs;
 const { Paragraph, Text } = Typography;
 
@@ -68,6 +71,74 @@ const Details = () => {
               </Col>
             </Row>
           </Card>
+
+          <Card style={{ marginTop: "2%", width: "60%", height: "220px" }}>
+      <Row gutter={16} style={{ textAlign: 'center' }}>
+        <Col span={8}>
+          <div>
+            <div style={{ fontWeight: 'bold' }}>Project Owner</div>
+            <Text type="secondary">The individual or organization responsible for managing the project.</Text>
+          </div>
+        </Col>
+        <Col span={8}>
+          <div>
+            <div style={{ fontWeight: 'bold' }}>Project Location</div>
+            <Text type="secondary">The geographical area where the project takes place.</Text>
+          </div>
+        </Col>
+        <Col span={8}>
+          <div>
+            <div style={{ fontWeight: 'bold' }}>Project Website</div>
+            <Text type="secondary">A link to the project's website for more information.</Text>
+          </div>
+        </Col>
+      </Row>
+    </Card>
+
+    <Card style={{ marginLeft: "62%", width: "38%", height: "400px", marginTop: "-14%" }}>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Card style={{ textAlign: 'center', height: '100%' }}>
+            <div style={{ fontWeight: 'bold' }}>Information</div>
+            <Text type="secondary">
+              Short description about the information insights related to the project.
+            </Text>
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card style={{ textAlign: 'center', height: '100%' }}>
+            <div style={{ fontWeight: 'bold' }}>Mitigation</div>
+            <Text type="secondary">
+              Short description about mitigation strategies and insights.
+            </Text>
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card style={{ textAlign: 'center', height: '100%' }}>
+            <div style={{ fontWeight: 'bold' }}>Benefits</div>
+            <Text type="secondary">
+              Short description about the benefits gained from the project.
+            </Text>
+          </Card>
+        </Col>
+      </Row>
+    </Card>
+
+      <Card style={{marginTop: "-10%", width: "60%", height: "160px"}}>
+      <Row gutter={16}>
+        <Col span={8}>
+        <div>
+        <Title level={4}>Project Short Description</Title>
+        <p>This project aims to implement renewable energy solutions in rural areas, enhancing energy access and reducing carbon footprints through solar and wind technologies.</p>
+        </div>
+        </Col>
+        
+        
+       
+       
+      </Row>
+    </Card>
+
         </TabPane>
 
         <TabPane tab="People" key="2">
