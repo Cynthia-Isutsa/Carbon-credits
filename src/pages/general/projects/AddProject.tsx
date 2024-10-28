@@ -37,12 +37,12 @@ export type DocumentParams = {
 export default function AddProject() {
   const [fileList, setFileList] = React.useState<UploadFile | any>([]);
 
-    const [stepData, setStepData] = useState({
-      details: {},
-      attachments: {},
-      quiz: {},
-      profile: {},
-    });
+  const [stepData, setStepData] = useState({
+    details: {},
+    attachments: {},
+    quiz: {},
+    profile: {},
+  });
 
   const fullForm = useRef<ProFormInstance>();
   const step1Ref: any = useRef<ProFormInstance>();
@@ -84,19 +84,18 @@ export default function AddProject() {
     dob: dob,
   });
 
-const step1Data ={
-  headline: "GHG Program",
-  fullNames: "Clean Energy Program",
-  description: "Promoting solar energy systems to reduce reliance on fossil fuels.",
-  ptojectType: "Grouped",
-  Website: "projectGHC.com",
+  const step1Data = {
+    headline: 'GHG Program',
+    fullNames: 'Clean Energy Program',
+    description: 'Promoting solar energy systems to reduce reliance on fossil fuels.',
+    ptojectType: 'Grouped',
+    Website: 'projectGHC.com',
 
-  sector: "Chemical Industry",
-  Methodology: "ISO 14064-6744RE- 56734G-3",
-  sectorTwo: "Industries"
-
-}
-const [step3Data, setStep3Data] = useState({});
+    sector: 'Chemical Industry',
+    Methodology: 'ISO 14064-6744RE- 56734G-3',
+    sectorTwo: 'Industries',
+  };
+  const [step3Data, setStep3Data] = useState({});
 
   React.useEffect(() => {
     if (schemesId && dob) {
@@ -408,83 +407,74 @@ const [step3Data, setStep3Data] = useState({});
             />
           </StepsForm.StepForm>
 
-      
+          <StepsForm.StepForm
+            formRef={step5Ref}
+            name="profile"
+            title="Profile"
+            onFinish={async () => {
+              console.log('Profile complete, form submitted');
+              return true;
+            }}
+            onLoad={() => {}}
+            layout="horizontal"
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 18 }}
+            labelAlign="left"
+          >
+            <Col style={{ display: 'flex' }}>
+              <Card style={{ width: '800px' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>headline:</div>
+                  <div>{step1Data.headline}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>fullNames:</div>
+                  <div>{step1Data.fullNames}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>Last Name:</div>
+                  <div>{step1Data.description}</div>
+                </div>
 
-<StepsForm.StepForm
-  formRef={step5Ref}
-  name="profile"
-  title="Profile"
-  onFinish={async () => {
-    console.log('Profile complete, form submitted');
-    return true;
-  }}
-  onLoad={() => {
-  }}
-  layout="horizontal"
-  labelCol={{ span: 6 }}
-  wrapperCol={{ span: 18 }}
-  labelAlign="left"
->
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>description:</div>
+                  <div>{step1Data.ptojectType}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px' }}>
+                  <div style={{ width: '120px', margin: '9px', marginBottom: '15px' }}>
+                    Website:
+                  </div>
+                  <div>{step1Data.Website}</div>
+                </div>
+              </Card>
 
-  <Col style={{display: "flex"}}>
+              <Card style={{ width: '800px' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>sector:</div>
+                  <div>{step1Data.sector}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>Methodology:</div>
+                  <div>{step1Data.Methodology}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>sectorTwo:</div>
+                  <div>{step1Data.sectorTwo}</div>
+                </div>
 
-  <Card style={{width: "800px"}}>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>headline:</div>
-    <div>{step1Data.headline}</div> 
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>fullNames:</div>
-    <div>{step1Data.fullNames}</div>
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>Last Name:</div>
-    <div>{step1Data.description}</div>
-  </div>
-
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>description:</div>
-    <div>{step1Data.ptojectType}</div>
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: "30px" }}>
-    <div style={{ width: '120px', margin: "9px", marginBottom: "15px" }}>Website:</div>
-    <div>{step1Data.Website}</div>
-  </div>
-  </Card>
-
-  <Card style={{width: "800px"}}>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>sector:</div>
-    <div>{step1Data.sector}</div> 
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>Methodology:</div>
-    <div>{step1Data.Methodology}</div>
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>sectorTwo:</div>
-    <div>{step1Data.sectorTwo}</div>
-  </div>
-
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '120px', margin: "9px" }}>description:</div>
-    <div>{step1Data.ptojectType}</div>
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: "30px" }}>
-    <div style={{ width: '120px', margin: "9px", marginBottom: "15px" }}>Website:</div>
-    <div>{step1Data.Website}</div>
-  </div>
-  </Card>
-  </Col>
- 
-
-
-
-</StepsForm.StepForm>
-
-
-
-
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '120px', margin: '9px' }}>description:</div>
+                  <div>{step1Data.ptojectType}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px' }}>
+                  <div style={{ width: '120px', margin: '9px', marginBottom: '15px' }}>
+                    Website:
+                  </div>
+                  <div>{step1Data.Website}</div>
+                </div>
+              </Card>
+            </Col>
+          </StepsForm.StepForm>
         </StepsForm>
       </ProCard>
     </PageContainer>
