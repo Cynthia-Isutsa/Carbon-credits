@@ -71,22 +71,14 @@ export default [
         component: './general/projects/AddProject',
         hideInMenu: true,
       },
-      // {
-      //   name: 'ViewProjects',
-      //   icon: 'smile',
-      //   path: '/general/projects/:id',
-      //   component: './general/projects/$id',
-      //   hideInMenu: true,
-      // },
-      
       {
-        name: 'ProjectDetails',
+        name: 'ViewProjects',
         icon: 'smile',
-        path: '/general/projects/:id/details', // New path for project details
-        component: './general/projects/Details', // Ensure this component exists
+        path: '/general/projects/:id',
+        component: './general/projects/$id',
         hideInMenu: true,
-    },
-    
+      },
+
       {
         name: ' Users',
         icon: 'smile',

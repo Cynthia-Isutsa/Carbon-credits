@@ -3,6 +3,8 @@ import { useLocation } from '@umijs/max';
 import Title from 'antd/es/typography/Title';
 import { useState } from 'react';
 import VVB from './VVB';
+import Details from './Profile';
+import Profile from './Profile';
 // import CreditNotes from './CreditNotes';
 
 
@@ -28,7 +30,7 @@ export default function $id() {
             {
               label: 'Overview',
               key: 'overviewtab',
-              // children: <Overview />,
+              children: <Profile />,
             },
             {
               label: `People`,
