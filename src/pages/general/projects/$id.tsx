@@ -5,6 +5,8 @@ import { useState } from 'react';
 import VVB from './VVB';
 import Details from './Profile';
 import Profile from './Profile';
+import People from './People';
+import Mitigation from './Mitigation';
 // import CreditNotes from './CreditNotes';
 
 
@@ -35,12 +37,12 @@ export default function $id() {
             {
               label: 'People',
               key: 'peopletab',
-              // children: <People />,
+              children: <People />,
             },
             {
               label: `Mitigation`,
               key: 'mitigationtab',
-              // children: <Mitigation />,
+              children: <Mitigation />,
             },
             {
               label: `Benefits`,

@@ -126,8 +126,7 @@ const Profile = () => {
                   <Title level={4}>Project Short Description</Title>
                   <p>
                     This project aims to implement renewable energy solutions in rural areas,
-                    enhancing energy access and reducing carbon footprints through solar and wind
-                    technologies.
+                    enhancing energy access and reducing carbon footprints.
                   </p>
                 </div>
               </Col>
