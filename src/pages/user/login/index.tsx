@@ -1,18 +1,22 @@
-import { login} from '@/services/ant-design-pro/api'; 
+import { login } from '@/services/ant-design-pro/api';
 import { LoadingOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
-import type { ProFormInstance } from '@ant-design/pro-components';
-import { ProCard, ProForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
+import {
+  ProCard,
+  ProForm,
+  ProFormCheckbox,
+  ProFormInstance,
+  ProFormText,
+} from '@ant-design/pro-components';
 import { FormattedMessage } from '@umijs/max';
 import { Button, Col, Image, message, Row, Spin } from 'antd';
-import Text from 'antd/es/typography/Text';
 import Title from 'antd/es/typography/Title';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
-import ccr from '../../../../public/ccr.jpeg';
+import rivers from '../../../../public/rivers.jpeg';
 
 const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [isSignup, setIsSignup] = useState<boolean>(false); 
+  const [isSignup, setIsSignup] = useState<boolean>(false);
   const formRef = useRef<ProFormInstance>();
   const navigate = useNavigate();
 
@@ -22,24 +26,27 @@ const Login = () => {
       let msg;
 
       if (isSignup) {
-        console.log('Signup values:', values)
+        console.log('Signup values:', values);
       } else {
-        // Handle login submission
-        msg = await login({ ...values }); 
+        msg = await login({ ...values });
       }
-      console.log({msg});
+      console.log({ msg });
 
       if (msg?.status === 'ok') {
         message.success(isSignup ? 'Signup successful!' : 'Login successful!');
-        window.location.href = '/'; 
+        window.location.href = '/';
       } else {
-        message.error(isSignup ? 'Signup failed, please try again!' : 'Login failed, please try again!');
+        message.error(
+          isSignup ? 'Signup failed, please try again!' : 'Login failed, please try again!',
+        );
       }
 
       setLoading(false);
     } catch (error) {
       console.log(error);
-      message.error(isSignup ? 'Signup failed, please try again!' : 'Login failed, please try again!');
+      message.error(
+        isSignup ? 'Signup failed, please try again!' : 'Login failed, please try again!',
+      );
       setLoading(false);
     }
   };
@@ -47,29 +54,35 @@ const Login = () => {
   return (
     <div
       style={{
-        background: 'linear-gradient(180deg, #A1887F  0%, #fff 100%)',
+        background: 'linear-gradient(180deg, #B2D6C9 0%, #EAE9D8 100%)',
+        // background: 'linear-gradient(180deg, #C2C5A5 0%, #F5F5E1 100%)',
         position: 'absolute',
         width: '100%',
         height: '100vh',
         top: 0,
         left: 0,
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
       }}
     >
-      <Row
+      {/* Left side with the form */}
+      <div
         style={{
-          zIndex: 1,
-          backgroundColor: 'transparent',
-          borderRadius: 0,
-          position: 'absolute',
-          height: '70vh',
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '0 20px',
         }}
-        justify="center"
-        align="middle"
       >
-        <Col style={{ width: '450px' }}>
+        <Row
+          style={{
+            zIndex: 1,
+            backgroundColor: 'transparent',
+            height: '70vh',
+          }}
+          justify="center"
+          align="middle"
+        >
           <ProCard
             colSpan={24}
             direction="column"
@@ -77,18 +90,20 @@ const Login = () => {
             layout="center"
             style={{ padding: '0px 10px', backgroundColor: 'transparent' }}
           >
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <Image
+                preview={false}
+                width={100}
+                height={100}
+                src={rivers}
+                style={{ borderRadius: '50px' }}
+              />
+            </div>
             <Title style={{ color: '#000' }} level={1}>
               Carbon Credit Registry
             </Title>
-
-            <Text>
-              Empower Your Sustainability Journey: Strategize and Optimize Your Carbon Credit
-              Footprint Today!
-            </Text>
           </ProCard>
-        </Col>
-        <Col style={{ width: '450px', marginTop: '60px' }}>
-          <ProCard colSpan={24} layout="center" bordered>
+          <Col>
             <ProForm
               style={{ padding: '10px 25px' }}
               onFinish={handleSubmit}
@@ -102,9 +117,6 @@ const Login = () => {
               }}
               formRef={formRef}
             >
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <Image preview={false} width={100} height={100} src={ccr} />
-              </div>
               <div
                 style={{
                   width: '100%',
@@ -118,7 +130,9 @@ const Login = () => {
                   {isSignup ? 'SIGN UP' : 'LOGIN'}
                 </Title>
                 <span style={{ fontWeight: 500, fontSize: 16 }}>
-                  {isSignup ? 'Create your account to start using the app.' : 'Please enter your details to start using the app.'}
+                  {isSignup
+                    ? 'Create your account to start using the app.'
+                    : 'Please enter your details to start using the app.'}
                 </span>
               </div>
 
@@ -132,7 +146,7 @@ const Login = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.username.required"
-                        defaultMessage="请输入用户名!"
+                        defaultMessage="Please enter your username!"
                       />
                     ),
                   },
@@ -148,14 +162,14 @@ const Login = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.password.required"
-                        defaultMessage="请输入密码！"
+                        defaultMessage="Please enter your password!"
                       />
                     ),
                   },
                 ]}
               />
 
-              {isSignup && ( 
+              {isSignup && (
                 <ProFormText.Password
                   name="confirmPassword"
                   fieldProps={{ size: 'large', prefix: <LockOutlined /> }}
@@ -180,7 +194,10 @@ const Login = () => {
                   <FormattedMessage id="pages.login.rememberMe" defaultMessage="Remember Me" />
                 </ProFormCheckbox>
                 <a style={{ float: 'right' }} onClick={() => navigate('/user/forgot-password')}>
-                  <FormattedMessage id="pages.login.forgotPassword" defaultMessage="Forgot Password?" />
+                  <FormattedMessage
+                    id="pages.login.forgotPassword"
+                    defaultMessage="Forgot Password?"
+                  />
                 </a>
               </div>
 
@@ -208,13 +225,24 @@ const Login = () => {
               </Row>
               <Row style={{ marginTop: 15, padding: '0px, 15px' }} justify="center">
                 <Button type="default" onClick={() => setIsSignup(!isSignup)}>
-                  {isSignup ? "Already have an account? Login" : "Don't have an account? Sign Up"}
+                  {isSignup ? 'Already have an account? Login' : "Don't have an account? Sign Up"}
                 </Button>
               </Row>
             </ProForm>
-          </ProCard>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Right side with translucent image */}
+      <div
+        style={{
+          flex: 1,
+          backgroundImage: `url(${rivers})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.6,
+        }}
+      ></div>
     </div>
   );
 };

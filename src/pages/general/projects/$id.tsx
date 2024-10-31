@@ -33,7 +33,7 @@ export default function $id() {
               children: <Profile />,
             },
             {
-              label: `People`,
+              label: 'People',
               key: 'peopletab',
               // children: <People />,
             },
